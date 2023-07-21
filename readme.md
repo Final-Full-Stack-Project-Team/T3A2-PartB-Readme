@@ -28,10 +28,10 @@ User sign up requires the name field to not be blank, the email address to meet 
 When name is blank:
 ![Alt text](docs/Backend-testing/Users/Sign-up-blank-name.png)
 
-When email does not contain a '@', '.' or is blank:
+When email contains a space, does not contain a '@', '.' or is blank:
 ![Alt text](docs/Backend-testing/Users/Sign-up-bad-email.png)
 
-When email does not contain at least 8 characters, a capital letter, and a number:
+When password does not contain at least 8 characters, a capital letter, and a number:
 ![Alt text](docs/Backend-testing/Users/Sign-up-bad-password.png)
 
 When signup is successful:
