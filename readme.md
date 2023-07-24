@@ -17,11 +17,9 @@ There are 4x collections in the database. The collections are:
 
 The screenshots below show testing for all CRUD functionality of the backend.
 
-## Groups Collection
+## Users Collection
 
-### Users
-
-*User Sign up*
+### User Sign up
 
 User sign up requires the name field to not be blank, the email address to meet requirements (cannot contain spaces, must contain '@' and '.') and the password to meet requirements (contain at least 8 characters, a capital letter, and a number)
 
@@ -37,7 +35,7 @@ When password does not contain at least 8 characters, a capital letter, and a nu
 When signup is successful:
 ![Alt text](docs/Backend-testing/Users/Sign-up-success.png)
 
-*User Login*
+### User Login
 
 User login requires correct username and password. 
 
@@ -48,7 +46,7 @@ When logging in successfully:
 ![Alt text](docs/Backend-testing/Users/Login-success.png)
 
 
-*GET users*
+### GET users
 
 GET all users:
 ![Alt text](docs/Backend-testing/Users/Get-all-users.png)
@@ -61,10 +59,91 @@ When getting user with invalid ID:
 When getting user with a valid ID:
 ![Alt text](docs/Backend-testing/Users/Get-user-success.png)
 
+## Groups Collection
 
+Groups are for the purpose of easily sharing lists with regular users. This means that if a user wants to frequently share lists with the same people, they do not need to enter their email address each time as those people will reside in the existing group that the user has created. When creating a group, the group name and at least one member is required.
 
+### POST Group
 
+When group name is left blank, has a single white space or multiple white spaces:
+![Alt text](docs/Backend-testing/Groups/New-Group-blank-name.png)
 
+![Alt text](docs/Backend-testing/Groups/New-Group-blank-name-single-space.png)
+
+![Alt text](docs/Backend-testing/Groups/New-Group-blank-name-multiple-spaces.png)
+
+When group creator is left blank:
+![Alt text](docs/Backend-testing/Groups/New-Group-blank-creator.png)
+
+When group members is left blank:
+![Alt text](docs/Backend-testing/Groups/New-Group-no-members.png)
+
+When creating a group successfully:
+![Alt text](docs/Backend-testing/Groups/New-Group-success.png)
+
+### GET Groups
+
+GET all Groups:
+![Alt text](docs/Backend-testing/Groups/Get-all-groups.png)
+
+GET user with id:
+
+When getting user with invalid ID:
+![Alt text](docs/Backend-testing/Groups/Get-group-invalid-id.png)
+
+When getting user with a valid ID:
+![Alt text](docs/Backend-testing/Groups/Get-group-valid-id.png)
+
+### PUT Groups
+
+A group's name and its members can be edited.
+A group's name cannot be edited to be blank or contain only white spaces. A group cannot be edited to contain no members as a group must have at least one member. A group's name can be changed without the need to change its members. A group's members can be changed without the need to change the its name. And both the group's name and its members can be changed in the same request.
+
+When group ID cannot be found:
+![Alt text](docs/Backend-testing/Groups/Put-Groups-invalid-id.png)
+
+When changing a group's name to be empty or only contains a single white space or multiple white spaces:
+![Alt text](docs/Backend-testing/Groups/Put-Group-name-empty.png)
+
+![Alt text](docs/Backend-testing/Groups/Put-Group-name-single-space.png)
+
+![Alt text](docs/Backend-testing/Groups/Put-Group-name-many-spaces.png)
+
+When editing a group's name is successful:
+![Alt text](docs/Backend-testing/Groups/Put-Group-name.png)
+
+When editing a group's members with a group member that is not found:
+![Alt text](docs/Backend-testing/Groups/Put-Group-member-not-found.png)
+
+When editing a group's members and not having at least one group member:
+![Alt text](docs/Backend-testing/Groups/Put-Group-members-empty.png)
+
+When editing group members is successful:
+![Alt text](docs/Backend-testing/Groups/Put-Group-members.png)
+
+When editing both a group's name and its members are successful
+![Alt text](docs/Backend-testing/Groups/Put-Group-name-and-members.png)
+
+### DELETE Groups
+
+A single group can be deleted with a group ID, or all groups can be deleted.
+
+When attempting to delete a group with an invalid ID:
+![Alt text](docs/Backend-testing/Groups/Delete-Group-invalid-id.png)
+
+When deleting a single group is successful:
+![Alt text](docs/Backend-testing/Groups/Delete-Group-success.png)
+
+When deleting all groups, a successful deletion responds with information about how many groups were deleted.
+
+When there are no groups to delete:
+![Alt text](docs/Backend-testing/Groups/Delete-Groups-no-groups.png)
+
+When there was only 1 group to delete:
+![Alt text](docs/Backend-testing/Groups/Delete-Groups-single.png)
+
+When there were multiple groups to delete:
+![Alt text](docs/Backend-testing/Groups/Delete-Groups-multiple.png)
 
 
 <br>
