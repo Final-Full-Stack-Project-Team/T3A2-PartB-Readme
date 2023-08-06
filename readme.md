@@ -7,6 +7,10 @@ All repositories:
 
 https://github.com/Final-Full-Stack-Project-Team
 
+Deployment link:
+
+https://sage-churros-00fcd2.netlify.app/
+
 # **Testing the backend**	
 
 There are 4x collections in the database. The collections are:
@@ -257,6 +261,43 @@ When delete list is unsuccessful:
 When delete list is successful:
 
 ![Alt text](docs/Backend-testing/Lists/Delete-List-success.png)
+
+## User testing
+
+In total, 5 users tested the app. All of them had the same feedback.
+
+They advised that they were able to create an account and log in successfully.
+
+They were all able to make lists, add items to the list, make groups, add people to the groups and successfully share their lists. 
+
+The 2 major points of feedback was:
+
+- Upon entering the app, a message displays saying "loading lists" which made it look like the app was not working. The app looked like this:
+
+![Alt text](<docs/Backend-testing/User testing screenshots/My-lists-old.png>)
+
+- All users showed confusion when clicking the share button on a list as it looked like this:
+
+![Alt text](<docs/Backend-testing/User testing screenshots/Share-list-old.png>)
+
+
+They advised that when the app says "loading lists" it looks like it isn't working properly. This was caused by logic that was implemented to show a message that says "loading lists" while the app is reaching the backend. And while this logic worked, it only worked when a user was logged in. When a user is logged out, it would display this message all the time. 
+
+The solution was include logic that said if the user is logged in, then display the everything in the app but if the user is logged out then display a new component that instructs the user to log in. The final result looks like this when the user first enters the app:
+
+![Alt text](<docs/Backend-testing/User testing screenshots/My-lists-new.png>)
+
+The second issue was present because each user did not know that they had to create a group in order to share a list. This meant that the users were creating a list a clicking the share button, only to be greeted with a page that has no groups to share the list with and there was no information about what to do.
+
+So the solution to this problem was to create logic that either shows groups if they are present, or show instructions to the user if no groups have been created.
+
+The final result looks like this:
+
+![Alt text](<docs/Backend-testing/User testing screenshots/Share-list-new.png>)
+
+Screenshots of all users who tested the app from the users collection:
+
+![Alt text](<docs/Backend-testing/User testing screenshots/Users.png>)
 
 <br>
 <br>
