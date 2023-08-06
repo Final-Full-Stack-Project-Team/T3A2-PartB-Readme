@@ -1,7 +1,11 @@
 
-# **PART B DOCUMENTATION**
+# **T3A2-B - Full Stack App (Part B)**
+
+### Luke Mastrocola and Rhys Morton
 
 ## Links
+
+App name: MINIMALIST
 
 All repositories:
 
@@ -10,6 +14,11 @@ https://github.com/Final-Full-Stack-Project-Team
 Deployment link:
 
 https://sage-churros-00fcd2.netlify.app/
+
+Trello board:
+
+https://trello.com/b/vGhBTCEH/t3a2-part-b
+
 
 # **Testing the backend**	
 
