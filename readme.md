@@ -11,28 +11,40 @@ https://github.com/Final-Full-Stack-Project-Team
 
 There are 4x collections in the database. The collections are:
 - groups
-- items
 - lists
 - users
 
 The screenshots below show testing for all CRUD functionality of the backend.
 
+All CRUD operations for all collections are not possible without user authentication using tokens. This ensures that users are only receiving their own data, and not other users data <br><br>
+When an request unsuccessful due to invalid token:
+
+![Alt text](docs/Backend-testing/Groups/Get-Group-Invalid-Token.png)
+
+When an request is successful with a valid token:
+
+![Alt text](docs/Backend-testing/Groups/Get-Group-Valid-Token.png)
+
 ## Users Collection
 
 ### User Sign up
 
-User sign up requires the name field to not be blank, the email address to meet requirements (cannot contain spaces, must contain '@' and '.') and the password to meet requirements (contain at least 8 characters, a capital letter, and a number)
+User sign up requires the name field to contain a name without being left empty, the email address to meet requirements (cannot contain spaces, must contain '@' and '.') and the password to meet requirements (contain at least 8 characters, a capital letter, and a number)
 
 When name is blank:
+
 ![Alt text](docs/Backend-testing/Users/Sign-up-blank-name.png)
 
 When email contains a space, does not contain a '@', '.' or is blank:
+
 ![Alt text](docs/Backend-testing/Users/Sign-up-bad-email.png)
 
 When password does not contain at least 8 characters, a capital letter, and a number:
+
 ![Alt text](docs/Backend-testing/Users/Sign-up-bad-password.png)
 
 When signup is successful:
+
 ![Alt text](docs/Backend-testing/Users/Sign-up-success.png)
 
 ### User Login
@@ -40,45 +52,52 @@ When signup is successful:
 User login requires correct username and password. 
 
 When logging in with incorrect credentials:
+
 ![Alt text](docs/Backend-testing/Users/Login-invalid.png)
 
-When logging in successfully:
+When logging in successfully it returns the user token which is used for authentication:
+
 ![Alt text](docs/Backend-testing/Users/Login-success.png)
 
 
 ### GET users
 
 GET all users:
+
 ![Alt text](docs/Backend-testing/Users/Get-all-users.png)
 
 GET user with id:
 
 When getting user with invalid ID:
+
 ![Alt text](docs/Backend-testing/Users/Get-user-not-found.png)
 
 When getting user with a valid ID:
+
 ![Alt text](docs/Backend-testing/Users/Get-user-success.png)
 
 ## Groups Collection
 
-Groups are for the purpose of easily sharing lists with regular users. This means that if a user wants to frequently share lists with the same people, they do not need to enter their email address each time as those people will reside in the existing group that the user has created. When creating a group, the group name and at least one member is required.
+Groups are for the purpose of easily sharing lists with users. This means that if a user wants to frequently share lists with the same people, they do not need to enter their email address each time as those people will reside in the existing group that the user has created. When creating a group, the group name and at least one member is required.
+Getting data requires the user to be logged in and authentication is processed using their login token 
 
 ### POST Group
 
 When group name is left blank, has a single white space or multiple white spaces:
+
 ![Alt text](docs/Backend-testing/Groups/New-Group-blank-name.png)
 
 ![Alt text](docs/Backend-testing/Groups/New-Group-blank-name-single-space.png)
 
 ![Alt text](docs/Backend-testing/Groups/New-Group-blank-name-multiple-spaces.png)
 
-When group creator is left blank:
-![Alt text](docs/Backend-testing/Groups/New-Group-blank-creator.png)
-
 When group members is left blank:
+
 ![Alt text](docs/Backend-testing/Groups/New-Group-no-members.png)
 
+A Group creator is also made the admin automatically. Only the admin can delete the group. 
 When creating a group successfully:
+
 ![Alt text](docs/Backend-testing/Groups/New-Group-success.png)
 
 ### GET Groups
@@ -89,9 +108,11 @@ GET all Groups:
 GET user with id:
 
 When getting user with invalid ID:
+
 ![Alt text](docs/Backend-testing/Groups/Get-group-invalid-id.png)
 
 When getting user with a valid ID:
+
 ![Alt text](docs/Backend-testing/Groups/Get-group-valid-id.png)
 
 ### PUT Groups
@@ -100,9 +121,11 @@ A group's name and its members can be edited.
 A group's name cannot be edited to be blank or contain only white spaces. A group cannot be edited to contain no members as a group must have at least one member. A group's name can be changed without the need to change its members. A group's members can be changed without the need to change the its name. And both the group's name and its members can be changed in the same request.
 
 When group ID cannot be found:
+
 ![Alt text](docs/Backend-testing/Groups/Put-Groups-invalid-id.png)
 
 When changing a group's name to be empty or only contains a single white space or multiple white spaces:
+
 ![Alt text](docs/Backend-testing/Groups/Put-Group-name-empty.png)
 
 ![Alt text](docs/Backend-testing/Groups/Put-Group-name-single-space.png)
@@ -110,18 +133,23 @@ When changing a group's name to be empty or only contains a single white space o
 ![Alt text](docs/Backend-testing/Groups/Put-Group-name-many-spaces.png)
 
 When editing a group's name is successful:
+
 ![Alt text](docs/Backend-testing/Groups/Put-Group-name.png)
 
 When editing a group's members with a group member that is not found:
+
 ![Alt text](docs/Backend-testing/Groups/Put-Group-member-not-found.png)
 
 When editing a group's members and not having at least one group member:
+
 ![Alt text](docs/Backend-testing/Groups/Put-Group-members-empty.png)
 
 When editing group members is successful:
+
 ![Alt text](docs/Backend-testing/Groups/Put-Group-members.png)
 
-When editing both a group's name and its members are successful
+When editing both a group's name and its members are successful:
+
 ![Alt text](docs/Backend-testing/Groups/Put-Group-name-and-members.png)
 
 ### DELETE Groups
@@ -129,23 +157,111 @@ When editing both a group's name and its members are successful
 A single group can be deleted with a group ID, or all groups can be deleted.
 
 When attempting to delete a group with an invalid ID:
+
 ![Alt text](docs/Backend-testing/Groups/Delete-Group-invalid-id.png)
 
 When deleting a single group is successful:
+
 ![Alt text](docs/Backend-testing/Groups/Delete-Group-success.png)
 
 When deleting all groups, a successful deletion responds with information about how many groups were deleted.
 
 When there are no groups to delete:
+
 ![Alt text](docs/Backend-testing/Groups/Delete-Groups-no-groups.png)
 
 When there was only 1 group to delete:
+
 ![Alt text](docs/Backend-testing/Groups/Delete-Groups-single.png)
 
 When there were multiple groups to delete:
+
 ![Alt text](docs/Backend-testing/Groups/Delete-Groups-multiple.png)
 
 
+## Lists Collection
+### POST list
+
+Lists require a name and an admin.
+
+When name is blank:
+
+![Alt text](docs/Backend-testing/Lists/New-List-No-Name.png)
+
+When there is no admin:
+
+![Alt text](docs/Backend-testing/Lists/New-List-No-Admin.png)
+
+When POST list is successful:
+![Alt text](docs/Backend-testing/Lists/New-List-Success.png)
+
+### GET all lists
+
+Whilst lists have their own collection, items do not. Any item added to a list is stored in that the list document with its own ID. This means that users can add whatever items they want to their list and items are not being duplicated in the database.
+
+If items were stored in their own collection, this would mean that if there are 1,000 users who add an item called "Apples", then there would be an items collection which has 1,000 different documents with the same name and different ID which would not be and efficient way to manage database storage. 
+
+With this method, a new ID is created for each apple but they are being added to the list document that already exists and any item that resides in a list is deleted from the when a user deletes the list.
+
+Getting all lists returns the following:
+
+- User ID
+- List name
+- Date created
+- isCompleted
+- list admin
+- the items that are in the list
+
+![Alt text](docs/Backend-testing/Lists/Get-All-Lists-Success.png)
+
+### GET list
+
+Get list returns the same thing.
+
+When get list is unsuccessful:
+
+![Alt text](docs/Backend-testing/Lists/Get-List-unsuccessful.png)
+
+When get list is successful:
+
+![Alt text](docs/Backend-testing/Lists/Get-List-Success.png)
+
+### UPDATE list
+
+A list can have its name updated and the items within the list added or removed
+
+When name is blank:
+
+![Alt text](docs/Backend-testing/Lists/Modifty-list-name-fail.png)
+
+When name change is successful:
+
+![Alt text](docs/Backend-testing/Lists/Modifty-list-name-success.png)
+
+When list is not found:
+
+![Alt text](docs/Backend-testing/Lists/Modifty-list-items-fail.png)
+
+When changing items is successful:
+
+![Alt text](docs/Backend-testing/Lists/Modifty-list-items-success.png)
+
+### DELETE list
+
+Only one list can be deleted at a time.
+
+When delete list is unsuccessful:
+
+![Alt text](docs/Backend-testing/Lists/Delete-List-unsuccessful.png)
+
+When delete list is successful:
+
+![Alt text](docs/Backend-testing/Lists/Delete-List-success.png)
+
+
+## Items Collection
+
+### POST Group
 <br>
 <br>
 <br>
