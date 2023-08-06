@@ -258,19 +258,6 @@ When delete list is successful:
 
 ![Alt text](docs/Backend-testing/Lists/Delete-List-success.png)
 
-
-## Items Collection
-
-### POST Group
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>
